@@ -26,9 +26,15 @@ instruction = input("Enter the Instruction String: ")
 
 while instruction != "X" :
 
+    if "W" in instruction :
+        value = input("Enter the Value Hex: ")
+        value = bytearray.fromhex(value)
+    else : 
+        value = b''
+   
     
     command = bytes(instruction, "ascii")
-    message = command + N
+    message = command + N + value
     print(message)
     
     ser.write(message)
