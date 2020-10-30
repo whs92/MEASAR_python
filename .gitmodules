@@ -1,0 +1,3 @@
+[submodule "MEASAR_python"]
+	path = MEASAR_python
+	url = git@it-ed-git.basisit.de:sissy/support/MEASAR_python.git
