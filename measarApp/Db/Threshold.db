@@ -1,0 +1,30 @@
+record(ao, "$(P):Threshold-SP"){
+	field(DESC, "Set threshold")
+	field(FLNK, "$(P):Threshold-CO")
+	field(DRVH, "130")
+	field(DRVL, "0")
+}
+# to do set limits
+
+record(calcout, "$(P):Threshold-CO"){
+	field(DESC, "calc output")
+	field(DTYP, "stream")
+	field(INPA, "$(P):Threshold-SP.VAL NPP")
+	field(CALC, "FLOOR(2*A-6)")
+	field(OUT, "@$(PROTO) set_1(T) $(PORT)")
+	field(FLNK, "$(P):Threshold-RD")
+}
+
+record(longin, "$(P):Threshold-RD"){
+	field(DESC, "Read threshold word")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_1(T) $(PORT)")
+	field(FLNK, "$(P):Threshold-RB")
+}
+
+record(calc, "$(P):Threshold-RB"){
+	field(DESC, "calc output")
+	field(INPA, "$(P):Threshold-RD.VAL NPP")
+	field(CALC, "A*0.5 +3")
+
+}

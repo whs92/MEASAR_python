@@ -11,6 +11,7 @@ include $(TOP)/configure/CONFIG
 DB += measar.proto
 DB += HighVoltage.db
 DB += DeadTime.db
+DB += Threshold.db
 DB += measar.db
 
 #----------------------------------------------------
