@@ -16,6 +16,7 @@ DB += Interval.db
 DB += Repetitions.db
 DB += OVLimit.db
 DB += AutoTransmission.db
+DB += AnodeCurrent.db
 DB += measar.db
 
 #----------------------------------------------------

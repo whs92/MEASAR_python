@@ -1,0 +1,15 @@
+record(longin, "$(P):AnodeCurrent-RD"){
+	field(DESC, "Read AnodeCurrent word")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_2(I) $(PORT)")
+	field(FLNK, "$(P):AnodeCurrent-RB")
+	field(SCAN, "1 second") #probably can't do this while measuring
+}
+
+record(calc, "$(P):AnodeCurrent-RB"){
+	field(DESC, "Measurement AnodeCurrent")
+	field(INPA, "$(P):AnodeCurrent-RD.VAL NPP")
+	field(CALC, "A*0.250")
+	field(EGU, "mA")
+
+}
