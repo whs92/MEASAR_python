@@ -1,0 +1,32 @@
+record(ao, "$(P):Interval-SP"){
+	field(DESC, "Set Interval")
+	field(FLNK, "$(P):Interval-CO")
+	field(EGU, "ms")
+	#field(DRVH, "655360")
+	#field(DRVL, "0")
+}
+
+
+record(calcout, "$(P):Interval-CO"){
+	field(DESC, "calc output")
+	field(DTYP, "stream")
+	field(INPA, "$(P):Interval-SP.VAL NPP")
+	field(CALC, "FLOOR(A/10)")
+	field(OUT, "@$(PROTO) set_2(M) $(PORT)")
+	field(FLNK, "$(P):Interval-RD")
+}
+
+record(longin, "$(P):Interval-RD"){
+	field(DESC, "Read Interval word")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_2(M) $(PORT)")
+	field(FLNK, "$(P):Interval-RB")
+}
+
+record(calc, "$(P):Interval-RB"){
+	field(DESC, "Measurement Interval")
+	field(INPA, "$(P):Interval-RD.VAL NPP")
+	field(CALC, "A*10")
+	field(EGU, "ms")
+
+}

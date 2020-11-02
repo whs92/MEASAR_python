@@ -4,7 +4,7 @@ record(ao, "$(P):Threshold-SP"){
 	field(DRVH, "130")
 	field(DRVL, "0")
 }
-# to do set limits
+
 
 record(calcout, "$(P):Threshold-CO"){
 	field(DESC, "calc output")

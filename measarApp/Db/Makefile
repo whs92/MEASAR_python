@@ -12,6 +12,7 @@ DB += measar.proto
 DB += HighVoltage.db
 DB += DeadTime.db
 DB += Threshold.db
+DB += Interval.db
 DB += measar.db
 
 #----------------------------------------------------
