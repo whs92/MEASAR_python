@@ -1,0 +1,17 @@
+record(longout, "$(P):OVLimit-SP"){
+	field(DESC, "OVLimit word")
+	field(DTYP, "stream")
+	field(OUT,  "@$(PROTO) set_1(O) $(PORT)")
+	field(FLNK, "$(P):OVLimit-RB")
+	
+	field(DRVH, "15")
+	field(DRVL, "1")
+}
+
+record(longin, "$(P):OVLimit-RB"){
+	field(DESC, "Read OVLimit word")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_1(O) $(PORT)")
+	
+}
+

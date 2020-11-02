@@ -14,6 +14,8 @@ DB += DeadTime.db
 DB += Threshold.db
 DB += Interval.db
 DB += Repetitions.db
+DB += OVLimit.db
+DB += AutoTransmission.db
 DB += measar.db
 
 #----------------------------------------------------

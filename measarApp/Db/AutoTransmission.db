@@ -1,0 +1,19 @@
+record(bo, "$(P):Auto-SP"){
+	field(DESC, "Auto Transmission")
+	field(DTYP, "stream")
+	field(OUT,  "@$(PROTO) set_1(F) $(PORT)")
+	field(ZNAM, "Only When Read")
+	field(ONAM, "Auto Read")
+	field(FLNK, "$(P):Auto-RB")
+
+}
+
+record(bi, "$(P):Auto-RB"){
+	field(DESC, "Read Auto word")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_1(F) $(PORT)")
+	field(ZNAM, "Only When Read")
+	field(ONAM, "Auto Read")
+	
+}
+
