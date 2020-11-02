@@ -1,0 +1,21 @@
+
+
+record(bo, "$(P):Reset"){
+	field(DESC, "Send proto reset")
+	field(DTYP, "stream")
+	field(OUT, "@$(PROTO) reset() $(PORT)")
+}
+
+
+record(longin, "$(P):DeadTime-RB"){
+	field(DESC, "Read Dead Time")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_val(D) $(PORT)")
+}
+
+record(longout, "$(P):DeadTime-SP"){
+	field(DESC, "Write Dead Time")
+	field(DTYP, "stream")
+	field(OUT, "@$(PROTO) set_val(D) $(PORT)")
+	field(FLNK, "$(P):DeadTime-RB")
+}

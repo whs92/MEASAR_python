@@ -1,0 +1,17 @@
+ReplyTimeout = 2000;
+
+
+reset{
+	out "0000";
+}
+
+get_val{
+	out "R\$1\x01";
+	in  "\x01%01r"; 
+}
+
+set_val{
+	out "W\$1\x01%.1r";
+	in  "\x01\$1"; 
+}
+

@@ -33,7 +33,7 @@ EPICS_BASE = /usr/local/epics/base
 
 SUPPORT = /usr/local/epics/support/
 ASYN = $(SUPPORT)/asyn
-STREAM = $(SUPPORT)/Stream
+STREAM = $(SUPPORT)/stream
 
 # Set RULES here if you want to use build rules from somewhere
 # other than EPICS_BASE:
