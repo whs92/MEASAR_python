@@ -1,0 +1,67 @@
+
+record(bo, "$(P):HVSlew-SP"){
+	field(DESC, "HV slew rate")
+	field(FLNK, "$(P):HighVoltage-CALC")
+	field(ZNAM, "100 V/s")
+	field(ONAM, "800 V/s")
+}
+
+record(longout,"$(P):HighVoltage-SP"){
+	field(DESC, "HV set point")
+	field(EGU, "V")
+	field(FLNK, "$(P):HighVoltage-CALC")
+}
+#To do, set limits
+	
+
+record(calcout, "$(P):HighVoltage-CALC"){
+	field(DESC, "CALC HV word")
+	field(DTYP, "Soft Channel")
+	field(INPA, "$(P):HVSlew-SP.RVAL NPP")
+	field(INPB, "$(P):HighVoltage-SP.VAL NPP")
+	field(OUT, "$(P):HighVoltage-WR PP")
+	field(CALC, "A | (B<<4)")
+	
+}
+
+record(longout, "$(P):HighVoltage-WR"){
+	field(DESC, "write hv word")
+	field(DTYP, "stream")
+	field(OUT, "@$(PROTO) set_2(H) $(PORT)")
+	field(FLNK, "$(P):HighVoltage-RD")
+}
+
+record(longin, "$(P):HighVoltage-RD"){
+	field(DESC, "Read HV Word")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_2(H) $(PORT)")
+	field(FLNK, "$(P):HighVoltage-RB")
+	#field(SCAN, "1 second")
+}
+# This value takes some time to settle, but we don't want to monitor it while a Measurement is taking place.
+
+
+record(calc, "$(P):HighVoltage-RB"){
+	field(DESC, "HV readback")
+	field(EGU, "V")
+	field(INPA, "$(P):HighVoltage-RD NPP")
+	field(CALC, "A>>4")
+	field(FLNK, "$(P):HVSlew-CALC")
+}
+
+record(calc, "$(P):HVSlew-CALC"){
+	field(DESC, "HVSlew readback")
+	field(INPA, "$(P):HighVoltage-RD NPP")
+	field(CALC, "A & 1")
+	field(FLNK, "$(P):HVSlew-RB")
+}
+
+record(bi,  "$(P):HVSlew-RB"){
+	field(DESC, "HV Slew")
+	field(INP, "$(P):HVSlew-CALC.VAL")
+	field(DTYP, "Soft Channel")
+	field(ZNAM, "100 V/s")
+	field(ONAM, "800 V/s")
+}
+
+

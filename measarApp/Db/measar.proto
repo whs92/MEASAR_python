@@ -5,13 +5,32 @@ reset{
 	out "0000";
 }
 
-get_val{
+get_1{
 	out "R\$1\x01";
 	in  "\x01%01r"; 
 }
 
-set_val{
+get_2{
+	out "R\$1\x01";
+	in  "\x01%#02r"; 
+}
+
+get_4{
+	out "R\$1\x01";
+	in  "\x01%04r"; 
+}
+
+set_1{
 	out "W\$1\x01%.1r";
 	in  "\x01\$1"; 
 }
 
+set_2{
+	out "W\$1\x01%#0.2r";
+	in  "\x01\$1"; 
+}
+
+command{
+	out "S\$1\x01";
+	in  "\x01\$1";
+}

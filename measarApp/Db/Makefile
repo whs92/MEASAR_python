@@ -9,6 +9,7 @@ include $(TOP)/configure/CONFIG
 #DB += xxx.db
 
 DB += measar.proto
+DB += HighVoltage.db
 DB += measar.db
 
 #----------------------------------------------------
