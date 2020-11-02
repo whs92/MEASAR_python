@@ -2,7 +2,7 @@ record(ao, "$(P):Interval-SP"){
 	field(DESC, "Set Interval")
 	field(FLNK, "$(P):Interval-CO")
 	field(EGU, "ms")
-	#field(DRVH, "655360")
+	#field(DRVH, "655350")
 	#field(DRVL, "0")
 }
 

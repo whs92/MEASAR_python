@@ -13,6 +13,7 @@ DB += HighVoltage.db
 DB += DeadTime.db
 DB += Threshold.db
 DB += Interval.db
+DB += Repetitions.db
 DB += measar.db
 
 #----------------------------------------------------
