@@ -1,0 +1,20 @@
+record(mbbo, "$(P):DeadTime-SP"){
+	field(DESC, "Write Dead Time")
+	field(DTYP, "stream")
+	field(ZRST, "15 ns")
+	field(ONST, "30 ns")
+	field(TWST, "62 ns")
+	field(THST, "100 ns")
+	field(OUT, "@$(PROTO) set_1(D) $(PORT)")
+	field(FLNK, "$(P):DeadTime-RB")
+}
+
+record(mbbi, "$(P):DeadTime-RB"){
+	field(DESC, "Read Dead Time")
+	field(DTYP, "stream")
+	field(ZRST, "15 ns")
+	field(ONST, "30 ns")
+	field(TWST, "62 ns")
+	field(THST, "100 ns")
+	field(INP, "@$(PROTO) get_1(D) $(PORT)")
+}

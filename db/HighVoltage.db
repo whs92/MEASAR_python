@@ -36,8 +36,10 @@ record(longin, "$(P):HighVoltage-RD"){
 	field(DTYP, "stream")
 	field(INP, "@$(PROTO) get_2(H) $(PORT)")
 	field(FLNK, "$(P):HighVoltage-RB")
-	field(SCAN, "1 second")
+	#field(SCAN, "1 second")
 }
+# This value takes some time to settle, but we don't want to monitor it while a Measurement is taking place.
+
 
 record(calc, "$(P):HighVoltage-RB"){
 	field(DESC, "HV readback")
