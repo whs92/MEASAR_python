@@ -12,8 +12,19 @@ record(longin, "$(P):Counter-RB"){
 	field(DESC, "Read Counter")
 	field(DTYP, "stream")
 	field(INP, "@$(PROTO) get_4(C) $(PORT)")
+	field(SCAN, ".1 second") #poll at 10 Hz
+	
 	
 }
+
+## Update Status
+
+record(seq, "$(P):UpdateStatus-CMD"){
+	field(DESC, "Process status pv's")
+	field(LNK1, "$(P):AnodeCurrent-RD PP")
+	field(LNK2, "$(P):HighVoltage-RD PP")
+}
+
 
 ## Read Accumulated Charge
 
@@ -33,6 +44,7 @@ record(calc, "$(P):AccQ-RB"){
 	field(EGU, "nC")
 
 }
+
 
 ###  Repetitions 
 
@@ -69,7 +81,7 @@ record(bo, "$(P):Abort-CMD"){
 record(longin, "$(P):Counter-INTR"){
 	field(DTYP, "stream")
 	field(INP, "@$(PROTO) get_counter() $(PORT)")
-	#field(SCAN, "I/O Intr")
+	field(SCAN, "I/O Intr")
 	field(FLNK, "$(P):Counter-CNT")
 }
 
