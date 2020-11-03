@@ -3,6 +3,7 @@ record(ao, "$(P):Threshold-SP"){
 	field(FLNK, "$(P):Threshold-CO")
 	field(DRVH, "130")
 	field(DRVL, "0")
+	field(EGU, "mV")
 }
 
 

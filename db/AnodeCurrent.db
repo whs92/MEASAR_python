@@ -3,7 +3,7 @@ record(longin, "$(P):AnodeCurrent-RD"){
 	field(DTYP, "stream")
 	field(INP, "@$(PROTO) get_2(I) $(PORT)")
 	field(FLNK, "$(P):AnodeCurrent-RB")
-	field(SCAN, "1 second") #probably can't do this while measuring
+	#field(SCAN, "1 second") #probably can't do this while measuring
 }
 
 record(calc, "$(P):AnodeCurrent-RB"){

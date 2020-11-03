@@ -1,0 +1,85 @@
+## Reset 
+
+record(bo, "$(P):Reset-CMD"){
+	field(DESC, "Send proto reset")
+	field(DTYP, "stream")
+	field(OUT, "@$(PROTO) reset() $(PORT)")
+}
+
+## Read counter result
+
+record(longin, "$(P):Counter-RB"){
+	field(DESC, "Read Counter")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_4(C) $(PORT)")
+	
+}
+
+## Read Accumulated Charge
+
+record(longin, "$(P):AccQ-RD"){
+	field(DESC, "Read AccQ word")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_2(Q) $(PORT)")
+	field(EGU, "Counts")
+	field(FLNK, "$(P):AccQ-RB")
+	
+}
+
+record(calc, "$(P):AccQ-RB"){
+	field(DESC, "accumulated Q ")
+	field(INPA, "$(P):AccQ-RD.VAL NPP")
+	field(CALC, "A*5.12")
+	field(EGU, "nC")
+
+}
+
+###  Repetitions 
+
+record(longout, "$(P):Repetitions-SP"){
+	field(DESC, "0 is inf")
+	field(DTYP, "stream")
+	field(DRVH, "255")
+	field(DRVL, "0")
+	field(OUT, "@$(PROTO) set_1(A) $(PORT)")
+	field(FLNK, "$(P):Repetitions-RB")
+}
+
+record(longin, "$(P):Repetitions-RB"){
+	field(DESC, "0 is inf")
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_1(A) $(PORT)")
+}
+
+### Measurement Control
+
+record(bo, "$(P):Start-CMD"){
+    field(DESC, "Start Measurement")
+	field(DTYP, "stream")
+	field(OUT, "@$(PROTO) command(P,$(P):Surplus-WVFM) $(PORT)")
+	field(FLNK, "$(P):Surplus-WVFM")
+}
+
+record(bo, "$(P):Abort-CMD"){
+    field(DESC, "Abort Measurement")
+	field(DTYP, "stream")
+	field(OUT, "@$(PROTO) command(U,$(P):Surplus-WVFM) $(PORT)")
+}
+
+record(longin, "$(P):Counter-INTR"){
+	field(DTYP, "stream")
+	field(INP, "@$(PROTO) get_counter() $(PORT)")
+	#field(SCAN, "I/O Intr")
+	field(FLNK, "$(P):Counter-CNT")
+}
+
+record(calc, "$(P):Counter-CNT"){
+	field(INPA, "$(P):Counter-CNT.VAL")
+	field(CALC, "A+1")
+}
+
+record(waveform, "$(P):Surplus-WVFM"){
+	field(NELM, "1024")
+	field(FTVL, "CHAR")
+}
+

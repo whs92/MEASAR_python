@@ -1,5 +1,3 @@
-ReplyTimeout = 2000;
-
 
 reset{
 	out "0000";
@@ -17,7 +15,7 @@ get_2{
 
 get_4{
 	out "R\$1\x01";
-	in  "\x01%04r"; 
+	in  "\x01%#04r"; 
 }
 
 set_1{
@@ -33,4 +31,12 @@ set_2{
 command{
 	out "S\$1\x01";
 	in  "\x01\$1";
+	@mismatch {
+		in "%(\$2)0r";
+	}
 }
+
+get_counter{
+	in  "\x01%#04r"; 
+}
+

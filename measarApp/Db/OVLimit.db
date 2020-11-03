@@ -5,7 +5,7 @@ record(longout, "$(P):OVLimit-SP"){
 	field(FLNK, "$(P):OVLimit-RB")
 	
 	field(DRVH, "15")
-	field(DRVL, "1")
+	field(DRVL, "0")
 }
 
 record(longin, "$(P):OVLimit-RB"){
